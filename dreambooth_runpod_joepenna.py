@@ -22,7 +22,7 @@ token_name = args.token_name
 number_of_steps = args.number_of_steps
 
 # Now you can use the arguments in your script
-print("Running project " +  project_name + "" + +" with " +  training_type + " training for " + str(number_of_steps) + " steps")
+print("Running project " +  project_name + " for token name " + token_name + " with " +  training_type + " training for " + str(number_of_steps) + " steps")
 
 
 # BUILD ENV
@@ -90,14 +90,14 @@ print("✅ model.ckpt successfully downloaded")
 
 # Keeping the dataset as person by default
 dataset = "person_ddim"
-if (training_type == "dog")
+if (training_type == "dog"):
     dataset = "dog"
-else if (training_type == "person")
+elif (training_type == "person"):
     dataset = "person_ddim"
 
-if (training_type == "dog")
+if (training_type == "dog"):
     get_ipython().system('git clone https://github.com/raunaqbn/Stable-Diffusion-Regularization-Images-dog.git')
-else
+elif (training_type == "person"):
     get_ipython().system('git clone https://github.com/djbielejeski/Stable-Diffusion-Regularization-Images-{dataset}.git')
 
 get_ipython().system('mkdir -p regularization_images/{dataset}')
@@ -203,9 +203,9 @@ image_grid(images, 1, len(images))
 max_training_steps = number_of_steps
 
 # Match class_word to the category of the regularization images you chose above.
-if (training_type == "dog")
+if (training_type == "dog"):
     class_word = "dog" # typical uses are "man", "person", "woman"
-else
+elif (training_type == "person"):
     class_word = "person"
 
 # This is the unique token you are incorporating into the stable diffusion model.
