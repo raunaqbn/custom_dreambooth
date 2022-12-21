@@ -126,26 +126,28 @@ get_ipython().system('mv -v Stable-Diffusion-Regularization-Images-{dataset}/{da
 
 #@markdown Add here the URLs to the images of the subject you are adding
 urls = [
- "https://imgur.com/sDUkoOL.png",
- "https://imgur.com/7RKhbqf.png",
- "https://imgur.com/OZBqExQ.png",
- "https://imgur.com/SLH7JEw.png",
- "https://imgur.com/MHaXPV2.png",
- "https://imgur.com/vivIoRG.png",
- "https://imgur.com/5SYnVib.png",
- "https://imgur.com/dnQBmLH.png",
- "https://imgur.com/g66ZC8w.png",
- "https://imgur.com/EZ488pA.png",
- "https://imgur.com/KBoyK6O.png",
- "https://imgur.com/cltgv94.png",
- "https://imgur.com/XZOcHBu.png",
- "https://imgur.com/AK4XREM.png",
- "https://imgur.com/KKB1f3N.png",
- "https://imgur.com/fYxdncc.png",
- "https://imgur.com/8q491iw.png",
- "https://imgur.com/7xwuUMG.png",
- "https://imgur.com/aUAy87z.png",
- "https://imgur.com/W5LJsdi.png",
+ "https://imgur.com/vnKY6e3.png",
+ "https://imgur.com/FgAhNST.png",
+ "https://imgur.com/YnVP4Ws.png",
+ "https://imgur.com/iLqto4x.png",
+ "https://imgur.com/vyFSAqG.png",
+ "https://imgur.com/DwY5Acp.png",
+ "https://imgur.com/5coSpkz.png",
+ "https://imgur.com/AavrvQG.png",
+ "https://imgur.com/AdqNJxC.png",
+ "https://imgur.com/56UbkoZ.png",
+ "https://imgur.com/4codIbW.png",
+ "https://imgur.com/HsB1xlk.png",
+ "https://imgur.com/bcd9iTX.png",
+ "https://imgur.com/DIIFt85.png",
+ "https://imgur.com/KlyoQ8F.png",
+ "https://imgur.com/ohtD2oy.png",
+ "https://imgur.com/yPbejcI.png",
+ "https://imgur.com/uQKXA1v.png",
+ "https://imgur.com/Gr28Bjf.png",
+ "https://imgur.com/yeT0wAm.png",
+ "https://imgur.com/PPcuZ6j.png",
+ "https://imgur.com/rc3jZLW.png",
  # You can add additional images here -- about 20-30 images in different
 ]
 
@@ -201,7 +203,7 @@ image_grid(images, 1, len(images))
 # MAX STEPS
 # How many steps do you want to train for.
 max_training_steps = number_of_steps
-
+class_word = "person"
 # Match class_word to the category of the regularization images you chose above.
 if (training_type == "dog"):
     class_word = "dog" # typical uses are "man", "person", "woman"
@@ -212,10 +214,10 @@ elif (training_type == "person"):
 token = token_name
 
 
-reg_data_root = "/workspace/Dreambooth-Stable-Diffusion/regularization_images/" + dataset
+reg_data_root = "/workspace/custom_dreambooth/regularization_images/" + dataset
 
 get_ipython().system('rm -rf training_images/.ipynb_checkpoints')
-get_ipython().system('python "main.py"  --base configs/stable-diffusion/v1-finetune_unfrozen.yaml  -t  --actual_resume "model.ckpt"  --reg_data_root "{reg_data_root}"  -n "{project_name}"  --gpus 0,  --data_root "/workspace/Dreambooth-Stable-Diffusion/training_images"  --max_training_steps {max_training_steps}  --class_word "{class_word}"  --token "{token}"  --no-test')
+get_ipython().system('python "main.py"  --base configs/stable-diffusion/v1-finetune_unfrozen.yaml  -t  --actual_resume "model.ckpt"  --reg_data_root "{reg_data_root}"  -n "{project_name}"  --gpus 0,  --data_root "/workspace/custom_dreambooth/training_images"  --max_training_steps {max_training_steps}  --class_word "{class_word}"  --token "{token}"  --no-test')
 
 
 # ## Copy and name the checkpoint file
