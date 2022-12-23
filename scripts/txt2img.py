@@ -181,4 +181,4 @@ if __name__ == "__main__":
     
     
 
-    print(f"Your samples are ready and waiting four you here: \n{outpath} \nEnjoy.")
+    print(f"Your samples are ready and waiting for you here: \n{outpath} \nEnjoy.")
