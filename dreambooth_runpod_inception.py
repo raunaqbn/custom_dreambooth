@@ -146,8 +146,6 @@ urls = [
  "https://imgur.com/uQKXA1v.png",
  "https://imgur.com/Gr28Bjf.png",
  "https://imgur.com/yeT0wAm.png",
- "https://imgur.com/PPcuZ6j.png",
- "https://imgur.com/rc3jZLW.png",
  # You can add additional images here -- about 20-30 images in different
 ]
 
@@ -214,10 +212,10 @@ elif (training_type == "person"):
 token = token_name
 
 
-reg_data_root = "/workspace/custom_dreambooth/regularization_images/" + dataset
+reg_data_root = "./regularization_images/" + dataset
 
 get_ipython().system('rm -rf training_images/.ipynb_checkpoints')
-get_ipython().system('python "main.py"  --base configs/stable-diffusion/v1-finetune_unfrozen.yaml  -t  --actual_resume "model.ckpt"  --reg_data_root "{reg_data_root}"  -n "{project_name}"  --gpus 0,  --data_root "/workspace/custom_dreambooth/training_images"  --max_training_steps {max_training_steps}  --class_word "{class_word}"  --token "{token}"  --no-test')
+get_ipython().system('python "main.py"  --base configs/stable-diffusion/v1-finetune_unfrozen.yaml  -t  --actual_resume "model.ckpt"  --reg_data_root "{reg_data_root}"  -n "{project_name}"  --gpus 0,  --data_root "./training_images"  --max_training_steps {max_training_steps}  --class_word "{class_word}"  --token "{token}"  --no-test')
 
 
 # ## Copy and name the checkpoint file
@@ -257,4 +255,4 @@ print("Download your trained model file from trained_models/" + file_name + " an
 # In[ ]:
 
 
-#get_ipython().system('python scripts/stable_txt2img.py  --ddim_eta 0.0  --n_samples 1  --n_iter 4  --scale 7.0  --ddim_steps 50  --ckpt "/workspace/Dreambooth-Stable-Diffusion/trained_models/{file_name}"  --prompt "joepenna person as a masterpiece portrait painting by John Singer Sargent in the style of Rembrandt"')
+#get_ipython().system('python scripts/stable_txt2img.py  --ddim_eta 0.0  --n_samples 1  --n_iter 4  --scale 7.0  --ddim_steps 50  --ckpt "./trained_models/{file_name}"  --prompt "joepenna person as a masterpiece portrait painting by John Singer Sargent in the style of Rembrandt"')
